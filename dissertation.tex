@@ -1,0 +1,96 @@
+% The font can be either 10pt or 12pt to conform to UNCC standards.  Change it here if you like.
+\documentclass[12pt]{article}
+
+\usepackage{packages/thesis}
+\usepackage{color}
+\usepackage{lscape}
+\usepackage{multirow}
+
+% This line makes sure that single-line captions won't automatically center.
+\usepackage{caption}
+\captionsetup{singlelinecheck=false}
+
+% This line decides how deep the Table of Contents will go.  
+% A tocdepth of 1 means it will only show chapters and sections.
+% You can increase it if you want your Table of Contents to show 
+% subsections (tocdepth = 2) or subsubsections (tocdepth = 3) as well.
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+% !!!!!!!!!!!! WARNING !!!!!!!!!!!!!!
+%
+% When printing your thesis, pay attention to the "Page Scaling" option on the print setup page!
+% DO NOT choose the option "Fit to Printable Area."
+% This is the default option in Adobe and it will make your formatting wrong!
+%  Make sure you change this option to "None."
+%
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\startprelim
+
+\author{UNCC PhD Student}
+\title{Quantifying the Unquantifiable}
+
+% Doctype should be either dissertation proposal, dissertation, or thesis.
+% If you're getting a master's, use "thesis."  If you're getting a PhD, use "dissertation."
+
+\doctype{dissertation}
+
+% These should be self-explanatory.
+
+\degree{Doctor of Philosophy}
+\major{Computing and Information Systems}
+\publicationyear{2013}
+
+\advisor{Dr. My Advisor}
+
+% Add the full name and title of all your committee members, 
+% apart from your advisor, one by one.  The style file expects
+% 3 to 5 committee members in addition to your advisor.
+
+\committeeMember{Dr. Committee Member 1}
+\committeeMember{Dr. Committee Member 2}
+\committeeMember{Dr. Committee Member 3}
+\committeeMember{Dr. Committee Member 4}
+
+% Generate the preliminary pages (title page, copyright page, 
+% abstract page, and table of contents) in the following order.
+
+\maketitlepage
+
+\makecopyright
+
+\abstract{
+In this dissertation, I convince you that I should be allowed to graduate. 
+}
+
+\tableofcontents
+
+
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+
+\startbody
+
+% Write chapter titles in ALL CAPS.
+% Write \bodysection & \bodysubsection in normal title caps
+% Sections can be labeled \label{Introduction}
+
+\input{chapters/Chapter1.tex}
+\input{chapters/Appendix.tex}
+%\input{chapters/Chapter6.tex}
+
+
+\startbib
+
+\bibliography{dissertation}
+
+\finishbib
+
+\end{document}
