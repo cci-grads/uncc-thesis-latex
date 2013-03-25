@@ -13,7 +13,10 @@
 \usepackage[dvips]{graphicx} 
 % This allows for creating and manipulating graphics.
 
-\usepackage{pstricks,pst-node,pst-tree} 
+% Scott - For Windows and LEd compatibitility, PSTricks was separated from the node and tree packages, and [pdf] was added (so pdflatex command can compile). Also, auto-pst-pdf allows postscript-to-pdf conversion of the tree- creating macros mentioned below. See this thread for more info: http://tex.stackexchange.com/questions/8413/how-to-use-pstricks-in-pdflatex
+\usepackage[pdf]{pstricks}
+\usepackage[off]{auto-pst-pdf}
+\usepackage{pst-node,pst-tree} 
 
 % This allows for tree- creating macros
 % from the pstricks graphics package.
