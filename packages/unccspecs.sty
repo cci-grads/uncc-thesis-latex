@@ -541,11 +541,11 @@ REFERENCES
 {\titlerule*[1pc]{}\contentspage}
 
 % Format \bodysubsection's toc entry.
-\titlecontents{bodysubsection}[8em]{\singlespace}{\contentslabel{4em}}
+\titlecontents{bodysubsection}[8em]{}{\contentslabel{4em}} %mwj: remove the /singlespace in the height, to maintain equal spacing between all depths, which is correct.
 {}{\titlerule*[1pc]{}\contentspage}
 
 % Format \bodysubsubsection's toc entry.
-\titlecontents{bodysubsubsection}[12em]{\singlespace}
+\titlecontents{bodysubsubsection}[12em]{}
 {\contentslabel{4em}}{}{\titlerule*[1pc]{}\contentspage}
 
 \titlecontents{figure}[0pt]{\normalfont\mdseries}{\figuretitlename ~
