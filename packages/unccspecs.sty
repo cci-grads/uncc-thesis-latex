@@ -396,7 +396,28 @@ ACKNOWLEDGMENTS\\
 \newpage
 }
 
+\newenvironment{publications}
+{
+  \newpage
+  \begin{singlespace}
+  \renewcommand*{\refname}{
+    PUBLICATIONS
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+  }
+  \begin{thebibliography}{99}
+}
+{
+\end{thebibliography}
+\end{singlespace}
+\renewcommand*{\refname}{
+REFERENCES
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+}
+}
 
+\newcommand{\pubitem}[1]{\bibitem{} #1}
 
 % The following commands will be used for formatting the bibliography.
 \renewcommand*{\refname}{
