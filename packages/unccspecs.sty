@@ -3,8 +3,8 @@
 % This package contains formatting commands for uncc thesis specifications. %
 % It defines the following commands: %
 % 1) \bodychapter - to be used to create chapters in the bodytext. %
-% 2) \bodysection, \bodysubsection \bodysubsubsection- create section subsection, and %
-% subsubsection in body text. %
+% 2) \bodysection, \bodysubsection \bodysubsubsection \bodysubsubsubsection- create section subsection, subsubsection and %
+% subsubsubsection in body text. %
 % 3) \appendixchapter, \appendixsection, \appendixsubsection - create appendix chapters, %
 % sections, and subsections. %
 % 4) \startbibliography, \finishbibliography - begin and end the bibliography environment.%
@@ -15,9 +15,11 @@
 % 7) \maketitlepage, \makecopyright, \abstract - generates the appropriate preliminary pages.
 % The original source of this file is unknown, although I found it posted online by
 % John Vannoy, so I assume he had a hand in it at some point.  This file included 
-% commands 1-4 as described above.
+% commands 1-4 as described above with the exception of subsubsubsections added in 2013.
 % Automatic generation of preliminary pages (5-7) added in 2008 by Caroline Ziemkiewicz.
 % Additional corrections added in 2009 by Evan Suma and Rich Nguyen.
+% Search for DOSINGLE in this file to print your thesis single spaced for review purposes added 2013 by Dr. Erin Carroll.
+% Subsubsubsection added in 2013 by Andrew Besmer.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 
@@ -76,7 +78,7 @@
 % which leaves 1 inch for the bottom body margin.
 
 
-% ERIN
+%DOSINGLE Comment next line out  to single space for review purposes
 \doublespacing 
 % command from setspace package to invoke doublespacing
 
@@ -116,6 +118,11 @@
 \titleclass{\bodysubsubsection}{straight}[\bodysubsection]
 \newcounter{bodysubsubsection}
 \renewcommand{\thebodysubsubsection}{\arabic{bodychapter}.\arabic{bodysection}.\arabic{bodysubsection}.\arabic{bodysubsubsection}}
+
+% Make a new titleclass called "bodysubsubsubsection" which will be used for subsections in the body text.
+\titleclass{\bodysubsubsubsection}{straight}[\bodysubsubsection]
+\newcounter{bodysubsubsubsection}
+\renewcommand{\thebodysubsubsubsection}{\arabic{bodychapter}.\arabic{bodysection}.\arabic{bodysubsection}.\arabic{bodysubsubsection}.\arabic{bodysubsubsubsection}}
 
 % Make commands for appendix chapters, sections, and subsections as aliases for chapter, section,
 % and subsection. This is not necessary but makes for a uniform scheme in which body chapters, etc.
@@ -168,7 +175,7 @@
 \begin{center}
 
 \MakeUppercase{\calltitle}
-\vspace{\baselineskip}	
+\vspace{\baselineskip}  
 \vspace{\baselineskip}	
 \vspace{\baselineskip}	
 
@@ -398,7 +405,7 @@ REFERENCES
 %\newcommand{\finishbibliography}{\end{thebibliography}}
 
 \newcommand{\startbib}{
-\newpage 
+\newpage
 \begin{singlespace}
 \addcontentsline{toc}{bodychapter}{REFERENCES}
 \bibliographystyle{abbrv}
@@ -450,6 +457,12 @@ REFERENCES
 {1.5em}{\normalfont\mdseries}
 \titlespacing{\subsubsection}{0pt}{.0625in}{.0625in}
 
+% Format \subsubsubsection command
+\titleformat{\subsubsubsection}[block]{\normalfont\mdseries\centering}
+{\thesubsubsubsection}
+{1.5em}{\normalfont\mdseries}
+\titlespacing{\subsubsubsection}{0pt}{.0625in}{.0625in}
+
 % This macro is used to increment the chapter counter and resetcounters associated with figures, tables,
 % and equations. This is necessary because titleclass \bodychapter isused to generate new chapters instead
 % of the standard \chapter command (which would do these things automatically). This macro will be used
@@ -466,8 +479,8 @@ REFERENCES
 {\bodychaptertitlename ~\thebodychapter :}
 {.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{empty}
 \setcounter{bodysection}{0} \setcounter{bodysubsection}{0}
-\setcounter{bodysubsubsection}
-{0}
+\setcounter{bodysubsubsection}{0}
+\setcounter{bodysubsubsubsection}{0}
 \addtocontents{lof}{\vspace*{-10pt}}
 \addtocontents{lot}{\vspace*{-10pt}}
 ]
@@ -483,7 +496,7 @@ REFERENCES
 \titleformat{\bodysection}[block]{\normalfont\mdseries\centering}
 {\thebodysection}
 {1.5em}{\normalfont\mdseries}[\setcounter{bodysubsection}
-{0}\setcounter{bodysubsubsection}{0}] %\setfigurecounters]
+{0}\setcounter{bodysubsubsection}{0}\setcounter{bodysubsubsubsection}{0}] %\setfigurecounters]
 \titlespacing{\bodysection}{0pt}{.0625in}{.0625in}
 
 
@@ -492,7 +505,7 @@ REFERENCES
 \titleformat{\bodysubsection}[block]{\normalfont\mdseries\centering}
 {\thebodysubsection}
 {1.5em}{\normalfont\mdseries}
-[\setcounter{bodysubsubsection}{0}] %\setfigurecounters]
+[\setcounter{bodysubsubsection}{0}\setcounter{bodysubsubsubsection}{0}] %\setfigurecounters]
 \titlespacing{\bodysubsection}{0pt}{.0625in}{.0625in}
 
 
@@ -500,10 +513,14 @@ REFERENCES
 % Format \bodysubsubsection command
 \titleformat{\bodysubsubsection}[block]{\normalfont\mdseries\centering}
 {\thebodysubsubsection}
-{1.5em}{\normalfont\mdseries} %[\setfigurecounters]
+{1.5em}{\normalfont\mdseries}[\setcounter{bodysubsubsubsection}{0}] %[\setfigurecounters]
 \titlespacing{\bodysubsubsection}{0pt}{.0625in}{.0625in}
 
-
+% Format \bodysubsubsubsection command
+\titleformat{\bodysubsubsubsection}[block]{\normalfont\mdseries\centering}
+{\thebodysubsubsubsection}
+{1.5em}{\normalfont\mdseries} %[\setfigurecounters]
+\titlespacing{\bodysubsubsubsection}{0pt}{.0625in}{.0625in}
 
 % The following commands format the table of contents (from titletoc package).
 % Note: the toc formatting for chapter below will be used for formatting the
@@ -527,6 +544,9 @@ REFERENCES
 \titlecontents{subsubsection}[12em]{}{\contentslabel{4em}}{}
 {\titlerule*[1pc]{.}\contentspage}
 
+% Format \subsubsubsection's toc entry.
+\titlecontents{subsubsubsection}[16em]{}{\contentslabel{4em}}{}
+{\titlerule*[1pc]{.}\contentspage}
 
 
 
@@ -546,6 +566,10 @@ REFERENCES
 
 % Format \bodysubsubsection's toc entry.
 \titlecontents{bodysubsubsection}[12em]{}
+{\contentslabel{4em}}{}{\titlerule*[1pc]{}\contentspage}
+
+% Format \bodysubsubsubsection's toc entry.
+\titlecontents{bodysubsubsubsection}[16em]{\singlespace}
 {\contentslabel{4em}}{}{\titlerule*[1pc]{}\contentspage}
 
 \titlecontents{figure}[0pt]{\normalfont\mdseries}{\figuretitlename ~
@@ -595,6 +619,7 @@ REFERENCES
 
 
 %Get LaTeX to Double-Space
+%DOSINGLE Comment next line out  to single space for review purposes
 \renewcommand{\baselinestretch}{2}
 
 
