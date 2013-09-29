@@ -475,7 +475,7 @@ REFERENCES
 
 
 % Format the new titleclass \bodychapter
-\titleformat{\bodychapter}[block]{\normalfont\mdseries\centering}
+\titleformat{\bodychapter}[block]{\normalfont\mdseries\centering\singlespacing}
 {\bodychaptertitlename ~\thebodychapter :}
 {.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{empty}
 \setcounter{bodysection}{0} \setcounter{bodysubsection}{0}
@@ -551,7 +551,7 @@ REFERENCES
 
 
 % Format \bodychapter's toc entry.
-\titlecontents{bodychapter}[0pt]{\normalfont\mdseries}
+\titlecontents{bodychapter}[0pt]{\normalfont\mdseries\singlespacing}
 %\titlecontents{bodychapter}[0pt]{\MakeUppercase\mdseries}
 {\bodychaptertitlename ~\thecontentslabel: \hspace{.25em} }
 {}{\titlerule*[1pc]{}\contentspage}
