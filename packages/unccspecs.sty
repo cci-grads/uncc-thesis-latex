@@ -512,7 +512,9 @@ REFERENCES
 % Format the new titleclass \bodychapter
 \titleformat{\bodychapter}[block]{\normalfont\mdseries\centering\singlespacing}
 {\bodychaptertitlename ~\thebodychapter :}
-{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{myheadings}
+% The first line removes page numbers on the first page of a new chapter. The second line displays them. UNCC hasn't made up their mind on this, so you might have to change it.
+{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{empty} % no page number
+%{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{myheadings} % yes page number
 \setcounter{bodysection}{0} \setcounter{bodysubsection}{0}
 \setcounter{bodysubsubsection}{0}
 \setcounter{bodysubsubsubsection}{0}
