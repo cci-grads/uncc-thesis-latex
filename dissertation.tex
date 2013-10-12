@@ -1,14 +1,10 @@
 % The font can be either 10pt or 12pt to conform to UNCC standards.  Change it here if you like.
 \documentclass[12pt]{article}
 
-%%%%%%%%%%%%%%% The base packages required by the Graduate School. Modify these  at your own peril!%%%%%%%%%%%%%%% 
-
 \usepackage{packages/thesis}
 % This line makes sure that single-line captions won't automatically center. 
 \usepackage{caption} % Should this move to unccspecs.sty?
 \captionsetup{singlelinecheck=false}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%%%% OPTIONAL PACKAGES YOU MAY WANT TO CONSIDER %%%%%%%%%%%%%%%
 % Uncomment the \usepackage{} command to add the environments to your document. Note that Miktex may need to download the package the first time you add the package, so be patient, especially if you enable a lot of these packages at once.
@@ -121,16 +117,11 @@
 In this dissertation, I convince you that I should be allowed to graduate. 
 }
 
-\tableofcontents
+\acknowledgments{
+We would like to thank hahahahahahahahahahaha...
+}
 
-
-
-\newpage
-\listoffigures
-
-\newpage
-\listoftables
-
+\listofcontentsfigurestables
 
 \startbody
 
@@ -149,4 +140,8 @@ In this dissertation, I convince you that I should be allowed to graduate.
 
 \finishbib
 
+\begin{publications}
+  \pubitem{Yi Shen, Publication1}
+  \pubitem{Yi Shen, Publication2}
+\end{publications}
 \end{document}

@@ -32,12 +32,11 @@
 % Note: to get table of contents to work correctly, you must
 % run latex twice.
 \usepackage[rm,md,up,tiny,center,compact]{titlesec}
-\usepackage{titletoc}
+\usepackage[dotinlabels]{titletoc}
 
 % This package is for conditional statements.
 \usepackage{ifthen}
 \usepackage{psfrag}
-
 
 
 % Make the top margin (from top edge of paper to top of header) be 3/4inch. This is
@@ -46,7 +45,7 @@
 
 % Negative value because top margin= \topmargin + 1 inch (orig {-0.625in})
 
-\setlength{\topmargin}{-0.4875in} 
+\setlength{\topmargin}{-0.425in} 
 
 % Negative value because top margin = \topmargin + 1 inch
 % (The amount .625 = .25 + .375 which accounts thedistance
@@ -385,11 +384,47 @@ ABSTRACT\\
 #1
 
 \newpage
-
 }
 
+\newcommand{\acknowledgments}[1] {
 
+\begin{centering}
 
+\begin{singlespace}
+
+ACKNOWLEDGMENTS\\
+
+\vspace{\baselineskip}	
+\vspace{\baselineskip}	
+\end{singlespace}
+\end{centering}
+
+#1
+\newpage
+}
+
+\newenvironment{publications}
+{
+  \newpage
+  \begin{singlespace}
+  \renewcommand*{\refname}{
+    PUBLICATIONS
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+  }
+  \begin{thebibliography}{99}
+}
+{
+\end{thebibliography}
+\end{singlespace}
+\renewcommand*{\refname}{
+REFERENCES
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+}
+}
+
+\newcommand{\pubitem}[1]{\bibitem{} #1}
 
 % The following commands will be used for formatting the bibliography.
 \renewcommand*{\refname}{
@@ -477,7 +512,7 @@ REFERENCES
 % Format the new titleclass \bodychapter
 \titleformat{\bodychapter}[block]{\normalfont\mdseries\centering\singlespacing}
 {\bodychaptertitlename ~\thebodychapter :}
-{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{empty}
+{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{myheadings}
 \setcounter{bodysection}{0} \setcounter{bodysubsection}{0}
 \setcounter{bodysubsubsection}{0}
 \setcounter{bodysubsubsubsection}{0}
@@ -485,8 +520,8 @@ REFERENCES
 \addtocontents{lot}{\vspace*{-10pt}}
 ]
 
-
-\titlespacing{\bodychapter}{0pt}{0.625in}{.1875in} 
+\titlespacing{\bodychapter}{0pt}{.575in}{.1875in} 
+%\titlespacing{\bodychapter}{0pt}{0.625in}{.1875in} 
 % Parameter .75in is needed to increase the 1.25in space from top edge
 % of paper to chapter title that already exists to make space = 2in.
 
@@ -548,39 +583,21 @@ REFERENCES
 \titlecontents{subsubsubsection}[16em]{}{\contentslabel{4em}}{}
 {\titlerule*[1pc]{.}\contentspage}
 
+\newcommand{\uncctocformat}[4]{
+  \titlecontents{#1}[#2]{\normalfont\mdseries\singlespacing}
+  {\hspace*{2em}\begin{tabular}[t]{@{}p{#3}}\hspace*{-2em}#4}
+    {\begin{tabular}[t]{@{}p{#3}}}{\end{tabular}\hfill\contentspage}
+}
 
+% TOC formatting for chapter, section levels
+\uncctocformat{bodychapter}{0pt}{350pt}{\bodychaptertitlename~\thecontentslabel:~}
+\uncctocformat{bodysection}{48pt}{302pt}{\contentslabel{2em}}
+\uncctocformat{bodysubsection}{96pt}{254pt}{\contentslabel{4em}}
+\uncctocformat{bodysubsubsection}{144pt}{206pt}{\contentslabel{4em}}
 
-% Format \bodychapter's toc entry.
-\titlecontents{bodychapter}[0pt]{\normalfont\mdseries\singlespacing\hangindent=2em}
-%\titlecontents{bodychapter}[0pt]{\MakeUppercase\mdseries}
-{\bodychaptertitlename ~\thecontentslabel: \hspace{.25em} }
-{}{\titlerule*[1pc]{}\contentspage}
-
-% Format \bodysection's toc entry
-\titlecontents{bodysection}[4em]{}{\contentslabel{2.3em}}{}
-{\titlerule*[1pc]{}\contentspage}
-
-% Format \bodysubsection's toc entry.
-\titlecontents{bodysubsection}[8em]{}{\contentslabel{4em}} %mwj: remove the /singlespace in the height, to maintain equal spacing between all depths, which is correct.
-{}{\titlerule*[1pc]{}\contentspage}
-
-% Format \bodysubsubsection's toc entry.
-\titlecontents{bodysubsubsection}[12em]{}
-{\contentslabel{4em}}{}{\titlerule*[1pc]{}\contentspage}
-
-% Format \bodysubsubsubsection's toc entry.
-\titlecontents{bodysubsubsubsection}[16em]{\singlespace}
-{\contentslabel{4em}}{}{\titlerule*[1pc]{}\contentspage}
-
-\titlecontents{figure}[0pt]
-{\normalfont\mdseries\singlespacing\hangindent=2em}
-{\figuretitlename ~ \thecontentslabel : \hspace{.25em}}
-{}
-{\titlerule*[1pc]{}\contentspage}
-
-\titlecontents{table}[0pt]{\normalfont\mdseries\hangindent=2em}{\tabletitlename ~
-\thecontentslabel : \hspace{.25em}}
-{}{\titlerule*[1pc]{}\contentspage}
+% TOC formatting for figure, table
+\uncctocformat{figure}{0pt}{350pt}{\figuretitlename~\thecontentslabel:~}
+\uncctocformat{table}{0pt}{350pt}{\tabletitlename~\thecontentslabel:~}
 
 
 % Command to continue appendix chapter headings correctly when each appendix chapter is contained in a
@@ -629,6 +646,20 @@ REFERENCES
 
 \pagenumbering{roman}
 
+}
+
+\newcommand{\listofcontentsfigurestables}{
+\lefthyphenmin=2
+\righthyphenmin=3
+\newpage
+\vspace*{-32pt}
+\tableofcontents
+\newpage
+\vspace*{-32pt}
+\listoffigures
+\newpage
+\vspace*{-32pt}
+\listoftables
 }
 
 \newcommand{\startbody}{
