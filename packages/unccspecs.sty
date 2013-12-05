@@ -14,7 +14,7 @@
 %    and the body.
 % 7) \maketitlepage, \makecopyright, \abstract - generates the appropriate preliminary pages.
 % The original source of this file is unknown, although I found it posted online by
-% John Vannoy, so I assume he had a hand in it at some point.  This file included 
+% John Vannoy, so I assume he had a hand in it at some point.  This file included
 % commands 1-4 as described above with the exception of subsubsubsections added in 2013.
 % Automatic generation of preliminary pages (5-7) added in 2008 by Caroline Ziemkiewicz.
 % Additional corrections added in 2009 by Evan Suma and Rich Nguyen.
@@ -45,7 +45,7 @@
 
 % Negative value because top margin= \topmargin + 1 inch (orig {-0.625in})
 
-\setlength{\topmargin}{-0.425in} 
+\setlength{\topmargin}{-0.425in}
 
 % Negative value because top margin = \topmargin + 1 inch
 % (The amount .625 = .25 + .375 which accounts thedistance
@@ -65,26 +65,26 @@
 
 % Make the right body margin (from right edge of paper to right edge of body) be 1 inch.
 
-\setlength{\textwidth}{6in} 
+\setlength{\textwidth}{6in}
 
 % Total paper width = 8.5 inches so 6 in.+ 1.5 in. = 7.5 in
 % which leaves 1 inch for the right margin.
 
 % Make the bottom body margin (from bottom edge of paper to bottomedge of body) be 1 inch.
 \setlength{\footskip}{0in} % No footer region needed.
-\setlength{\textheight}{9in} 
+\setlength{\textheight}{9in}
 % Total paper height = 11 inches so 9 in.+ 1 in. = 10 in.
 % which leaves 1 inch for the bottom body margin.
 
 
 %DOSINGLE Comment next line out  to single space for review purposes
-\doublespacing 
+\doublespacing
 % command from setspace package to invoke doublespacing
 
-\pagestyle{myheadings} 
+\pagestyle{myheadings}
 % This makes my own style headings (withpagenumber in upper rt. corner).
 
-\markright{} 
+\markright{}
 % This will put page number in right corner without anyother text in header.
 % (Footer will be blank.)
 
@@ -126,9 +126,9 @@
 % Make commands for appendix chapters, sections, and subsections as aliases for chapter, section,
 % and subsection. This is not necessary but makes for a uniform scheme in which body chapters, etc.
 % use \bodychapter section command and appendix chapters use \appendixchapter section command.
-\newcommand*{\appendixchapter}[1]{\chapter{#1}}
-\newcommand*{\appendixsection}[1]{\section{#1}}
-\newcommand*{\appendixsubsection}[1]{\subsection{#1}}
+\newcommand*{\appendixchapter}[1]{\chapter{#1}\addcontentsline{toc}{bodychapter}{#1}\par}
+\newcommand*{\appendixsection}[1]{\section{#1}\addcontentsline{toc}{bodysection}{#1}\par}
+\newcommand*{\appendixsubsection}[1]{\subsection{#1}\addcontentsline{toc}{bodysubsection}{#1}\par}
 
 %% Format the title page.
 
@@ -147,16 +147,16 @@
 
 \ifthenelse{\isundefined{\sigone}}
 {\newcommand{\sigone}{#1}}
-{ 
+{
 \ifthenelse{\isundefined{\sigtwo}}
 {\newcommand{\sigtwo}{#1}}
-{ 
+{
 \ifthenelse{\isundefined{\sigthree}}
 {\newcommand{\sigthree}{#1}}
-{ 
+{
 \ifthenelse{\isundefined{\sigfour}}
 {\newcommand{\sigfour}{#1}}
-{ 
+{
 \ifthenelse{\isundefined{\sigfive}}
 {\newcommand{\sigfive}{#1}}
 {}}}}}
@@ -164,7 +164,7 @@
 }
 
 
-\newcommand{\maketitlepage} 
+\newcommand{\maketitlepage}
 {
 
 \begin{titlepage}
@@ -174,48 +174,48 @@
 \begin{center}
 
 \MakeUppercase{\calltitle}
-\vspace{\baselineskip}  
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
-by 
-\vspace{\baselineskip}	
+by
+\vspace{\baselineskip}
 
-\callauthor 
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\callauthor
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
 A \calldoctype~submitted to the faculty of\\
 The University of North Carolina at Charlotte\\
 in partial fulfillment of the requirements\\
 for the degree of \calldegree~in\\
-\callmajor 
-\vspace{\baselineskip}	
+\callmajor
+\vspace{\baselineskip}
 
 Charlotte
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 
-\callyear 
+\callyear
 
 \end{center}
 
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 
 
 \@ifundefined{sigthree}{
 % There are three committee members.
 
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
 \vspace{\baselineskip}
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
 \hspace{380pt}
 
@@ -226,24 +226,24 @@ Charlotte
 \begin{flushleft}
 
 Approved by:\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \calladvisor\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigone\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigtwo
 }{\@ifundefined{sigfour}{
 % There are three committee members.
 
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
 \vspace{\baselineskip}
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
 \hspace{380pt}
 
@@ -254,22 +254,22 @@ Approved by:\\
 \begin{flushleft}
 
 Approved by:\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \calladvisor\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigone\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigtwo\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigthree
 }{\@ifundefined{sigfive}{
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
 \hspace{380pt}
 
@@ -280,22 +280,22 @@ Approved by:\\
 \begin{flushleft}
 
 Approved by:\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \calladvisor\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigone\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigtwo\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigthree\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigfour}{
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \vspace{\baselineskip}
 \hspace{380pt}
 
@@ -306,22 +306,22 @@ Approved by:\\
 \begin{flushleft}
 
 Approved by:\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \calladvisor\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigone\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigtwo\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigthree\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigfour\\
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 \hrulefill \\
 \sigfive}}}
 
@@ -370,12 +370,12 @@ ALL RIGHTS RESERVED
 
 ABSTRACT\\
 
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 
 \MakeUppercase{\callauthor}. \calltitle. (Under the direction of \MakeUppercase{\calladvisor})
 
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
 %\vspace{\baselineskip}
 
 \end{singlespace}
@@ -394,8 +394,8 @@ ABSTRACT\\
 
 ACKNOWLEDGMENTS\\
 
-\vspace{\baselineskip}	
-\vspace{\baselineskip}	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 \end{singlespace}
 \end{centering}
 
@@ -522,8 +522,8 @@ REFERENCES
 \addtocontents{lot}{\vspace*{-10pt}}
 ]
 
-\titlespacing{\bodychapter}{0pt}{.575in}{.1875in} 
-%\titlespacing{\bodychapter}{0pt}{0.625in}{.1875in} 
+\titlespacing{\bodychapter}{0pt}{.575in}{.1875in}
+%\titlespacing{\bodychapter}{0pt}{0.625in}{.1875in}
 % Parameter .75in is needed to increase the 1.25in space from top edge
 % of paper to chapter title that already exists to make space = 2in.
 
@@ -588,7 +588,8 @@ REFERENCES
 \newcommand{\uncctocformat}[4]{
   \titlecontents{#1}[#2]{\normalfont\mdseries\singlespacing}
   {\hspace*{2em}\begin{tabular}[t]{@{}p{#3}}\hspace*{-2em}#4}
-    {\begin{tabular}[t]{@{}p{#3}}}{\end{tabular}\hfill\contentspage}
+  {\hspace*{2em}\begin{tabular}[t]{@{}p{#3}}\hspace*{-2em}}
+  {\end{tabular}\hfill\contentspage}
 }
 
 % TOC formatting for chapter, section levels
@@ -596,6 +597,7 @@ REFERENCES
 \uncctocformat{bodysection}{48pt}{302pt}{\contentslabel{2em}}
 \uncctocformat{bodysubsection}{96pt}{254pt}{\contentslabel{4em}}
 \uncctocformat{bodysubsubsection}{144pt}{206pt}{\contentslabel{4em}}
+
 
 % TOC formatting for figure, table
 \uncctocformat{figure}{0pt}{350pt}{\figuretitlename~\thecontentslabel:~}
@@ -670,4 +672,4 @@ REFERENCES
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-}
+} 
