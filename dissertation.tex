@@ -24,7 +24,7 @@
 % Allows the manipulation of graphics (http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics)
 %\usepackage{graphicx}
 
-% 	The package alters the command \_ (which normally prints an underscore character or facsimile) so that the hyphenation of constituent words is not affected, and hyphenation is permitted after the underscore. (http://ctan.mirrorcatalogs.com/macros/latex/contrib/underscore/underscore.pdf)
+%         The package alters the command \_ (which normally prints an underscore character or facsimile) so that the hyphenation of constituent words is not affected, and hyphenation is permitted after the underscore. (http://ctan.mirrorcatalogs.com/macros/latex/contrib/underscore/underscore.pdf)
 %\usepackage{underscore}
 
 %  Everything input between the begin and end commands are processed as if by a typewriter (http://en.wikibooks.org/wiki/LaTeX/Paragraph_Formatting). Useful for adding code blocks/listings
@@ -118,7 +118,8 @@ In this dissertation, I convince you that I should be allowed to graduate.
 }
 
 \acknowledgments{
-We would like to thank hahahahahahahahahahaha...
+We would like to thank ..............
+:) :) :)
 }
 
 \listofcontentsfigurestables
@@ -130,18 +131,20 @@ We would like to thank hahahahahahahahahahaha...
 % Sections can be labeled \label{Introduction}
 
 \input{chapters/chapter1.tex}
-\input{chapters/appendix.tex}
-%\input{chapters/Chapter6.tex}
 
+
+\clearpage 
 
 \startbib
 
 \bibliography{dissertation}
 
 \finishbib
+\clearpage 
+\input{chapters/appendix.tex}
 
-\begin{publications}
-  \pubitem{Yi Shen, Publication1}
-  \pubitem{Yi Shen, Publication2}
-\end{publications}
+%\begin{publications}
+%  \pubitem{Yi Shen, Publication1}
+%  \pubitem{Yi Shen, Publication2}
+%\end{publications}
 \end{document}
